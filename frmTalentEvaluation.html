@@ -14,7 +14,7 @@
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <img src="C:\68_Freshers_BnB24\68_Freshers_BnB24\Source_Imgsa\Logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          <img src="\static\Logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
           evalBot
         </a>
       </div>
@@ -29,45 +29,66 @@
             <div class="mb-3 row col-auto my-3">
               <label for="txtName" class="col-form-label">Name of Evaluee</label>
               <div class="mb-3 my-3">
-                <input type="text" class="form-control" name="txtName" id="txtNames" aria-describedby="inputGroupFileAddon04">
+                <input type="text" class="form-control" name="txtName" id="txtName" aria-describedby="inputGroupFileAddon04">
               </div>
               
               <label for="txtResumes" class="form-label">Upload Resumes</label>
-                <div class="input-group my-3">
-                    <input type="file" accept=" .txt, .pdf, .docs, .docx" class="form-control" name="txtResumes" id="txtResumes" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                  </div>
-            </div>
+              <div class="input-group my-3">
+                  <input type="file" accept=" .txt, .pdf, .docs, .docx" class="form-control" name="txtResumes" id="txtResumes" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                </div>
+                </div>
                   <button class="btn btn-outline-secondary" type="submit" name="cmdSubmit" id="cmdSubmit" value="Upload">Submit</button>
-            </div>
-      </div>
-            
+                </div>
+              </div>
+              
+              
             </form>
-        </div>
-        <div
-          class="container"
-        >
-        <table class="table caption-top">
-          <caption>List of Evaluee</caption>
-          <thead>
+          </div>
+          <div class="container">
+
+            <form action="/reset" method="POST">
+              
+              <button class="btn btn-outline-secondary" type="submit" name="cmdReset" id="cmdReset"action="/reset" method="POST" value="Reset">Reset</button>
+              <div
+              class="container"
+              >
+              <table class="table caption-top">
+                <caption>List of Evaluee</caption>
+                <thead>
             <tr>
-              <th scope="col">Rank</th>
+              <th scope="col">SrNO</th>
               <th scope="col">Name</th>
-              <th scope="col">Match %</th>
-              <th scope="col">Exp Years</th>
-              <th scope="col">Gap Years</th>
+              <th scope="col">Match</th>
+              <th scope="col">Experience</th>
+              <th scope="col">Gap</th>
+              <th scope="col">Date</th>
+              <th scope="col">Rank</th>
             </tr>
           </thead>
+          
           <tbody>
-           
+            {% for mevaluee in allMEvaluee %}
+            <tr>
+              <th scope="row">{{mevaluee.Srno}}</th>
+              <td>{{mevaluee.Name}}</td>
+              <td>{{mevaluee.Match}}</td>
+              <td>{{mevaluee.Experience}}</td>
+              <td>{{mevaluee.Gap}}</td>
+              <td>{{mevaluee.Date_created}}</td>
+              <td>{{mevaluee.Rank}}</td>
+            </tr>
+            {% endfor %}
           </tbody>
         </table>
         <p><h6> Website is developed by <b>#68_Freshers_BnB24</b> Team </h6></p>
-        </div>
-        
-        <!-- Optional JavaScript; choose one of the two! -->
-        
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      </div>
+    </form>
+  </div>
+      
+      <!-- Optional JavaScript; choose one of the two! -->
+      
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         
         <!-- Option 2: Separate Popper and Bootstrap JS -->
         <!--
